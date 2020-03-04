@@ -1,4 +1,4 @@
 *.class
-/build/
+/build/classes
 /nbproject/
 build.xml

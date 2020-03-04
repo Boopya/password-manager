@@ -10,7 +10,7 @@ public class LoginFrame {
     JLabel usernameLabel, passwordLabel, titleLabel;
     JTextField usernameField;
     JPasswordField passwordField;
-    JButton loginButton;
+    JButton loginButton, registerButton;
 
     public static void main(String[] args) {
         new LoginFrame();
@@ -25,9 +25,7 @@ public class LoginFrame {
         frame.setTitle("Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
+        
         pane = new JPanel(new GridBagLayout());
         frame.add(pane);
 
@@ -52,7 +50,6 @@ public class LoginFrame {
         pane.add(usernameLabel, c);
 
         passwordLabel = new JLabel("Password: ", SwingConstants.CENTER);
-        c.insets = new Insets(15,15,15,0);
         c.gridx = 0;
         c.gridy = 2;
         c.ipadx = 50;
@@ -70,7 +67,6 @@ public class LoginFrame {
         pane.add(usernameField, c);
 
         passwordField = new JPasswordField();
-        c.insets = new Insets(15,0,15,15);
         c.gridx = 1;
         c.gridy = 2;
         c.ipadx = 150;
@@ -80,14 +76,27 @@ public class LoginFrame {
 
         loginButton = new JButton("Login");
         c.insets = new Insets(15,15,15,15);
-        c.anchor = GridBagConstraints.PAGE_END;
-        c.ipadx = 20;
-        c.ipady = 10;
+        c.anchor = GridBagConstraints.CENTER;
         c.gridx = 0;
         c.gridy = 3;
+        c.ipadx = 50;
+        c.ipady = 10;
+        c.weightx = 0.5;
         c.gridwidth = 2;
         pane.add(loginButton, c);
+        
+        registerButton = new JButton("Register");
+        c.insets = new Insets(0,15,15,15);
+        c.gridx = 0;
+        c.gridy = 4;
+        c.ipadx = 35;
+        c.ipady = 10;
+        c.weightx = 0.5;
+        c.gridwidth = 2;
+        pane.add(registerButton, c);
 
         frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }
