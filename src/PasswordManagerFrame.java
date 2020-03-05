@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
 import javax.swing.table.DefaultTableModel;
 
 public class PasswordManagerFrame extends JFrame implements DatabaseAccessCredentials, DatabaseConstants, SQLStatements {
@@ -261,7 +262,8 @@ public class PasswordManagerFrame extends JFrame implements DatabaseAccessCreden
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getActionCommand().equals("Save")) {
                     saveAccountChanges();
-                    return;
+                    frame.dispose();
+                    new PasswordManagerFrame();
                 }
             }
         }
@@ -285,6 +287,7 @@ public class PasswordManagerFrame extends JFrame implements DatabaseAccessCreden
                 accountsTableModel.setValueAt(updatedSiteName, selectedRow, SITE_NAME_COL_INDEX);
                 accountsTableModel.setValueAt(updatedSiteUsername, selectedRow, SITE_USERNAME_COL_INDEX);
                 accountsTableModel.setValueAt(updatedSitePassword, selectedRow, SITE_PASSWORD_COL_INDEX);
+                JOptionPane.showMessageDialog(rootPane, "Successfully updated.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 editFrame.dispose();
             }
         }
@@ -306,6 +309,7 @@ public class PasswordManagerFrame extends JFrame implements DatabaseAccessCreden
             siteNameField.setText("");
             siteUsernameField.setText("");
             sitePasswordField.setText("");
+            
         }
         catch(SQLException e) {
             e.printStackTrace();
